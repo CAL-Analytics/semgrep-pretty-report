@@ -19,6 +19,7 @@ A beautiful, self-contained HTML report generator for [Semgrep](https://semgrep.
 - **CI/CD ready**: Perfect for pipeline artifacts and web-based viewing
 - **Fast generation**: Process large semgrep outputs quickly
 - **Rich metadata**: Displays CWE, OWASP, technology tags, and references
+- **Source code display**: Shows actual code snippets from your files (when available)
 
 ## 🚀 Quick Start
 
@@ -139,7 +140,7 @@ Click "Details" on any finding to see:
 - Severity and confidence levels
 - Technology and category tags
 - CWE and OWASP classifications
-- Code snippets (when available)
+- **Actual source code snippets** from your files (with line numbers)
 - External references and links
 
 ### Error Reporting

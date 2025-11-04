@@ -124,10 +124,51 @@ class SemgrepReportGenerator:
 
         return report
 
+    def _read_source_lines(self, file_path: str, start_line: int, end_line: int) -> Optional[str]:
+        """Read source code lines from a file for the given line range."""
+        try:
+            path = Path(file_path)
+            if not path.exists():
+                return None
+
+            with open(path, 'r', encoding='utf-8', errors='ignore') as f:
+                lines = f.readlines()
+
+            # Convert to 0-based indexing and ensure we don't go out of bounds
+            start_idx = max(0, start_line - 1)
+            end_idx = min(len(lines), end_line)
+
+            if start_idx >= len(lines):
+                return None
+
+            # Get the requested lines
+            selected_lines = lines[start_idx:end_idx]
+
+            # Add line numbers for context
+            numbered_lines = []
+            for i, line in enumerate(selected_lines, start=start_line):
+                numbered_lines.append(f"{i:4d}|{line.rstrip()}")
+
+            return '\n'.join(numbered_lines)
+
+        except (OSError, IOError, UnicodeDecodeError):
+            # If we can't read the file, return None
+            return None
+
     def _parse_finding(self, result: Dict[str, Any]) -> Finding:
         """Parse a single semgrep result into a Finding object."""
         extra = result.get("extra", {})
         metadata = extra.get("metadata", {})
+
+        # Try to read actual source code lines
+        source_lines = self._read_source_lines(
+            result["path"],
+            result["start"]["line"],
+            result["end"]["line"]
+        )
+
+        # Fall back to semgrep-provided lines if we can't read the source
+        lines = source_lines or extra.get("lines")
 
         return Finding(
             check_id=result["check_id"],
@@ -143,7 +184,7 @@ class SemgrepReportGenerator:
             owasp=metadata.get("owasp", []),
             references=metadata.get("references", []),
             shortlink=metadata.get("shortlink"),
-            lines=extra.get("lines"),
+            lines=lines,
             fingerprint=extra.get("fingerprint")
         )
 
