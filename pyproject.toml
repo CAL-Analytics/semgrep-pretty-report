@@ -1,0 +1,39 @@
+[project]
+name = "semgrep-pretty-report"
+version = "0.1.0"
+description = "Beautiful HTML report generator for Semgrep security scan results"
+authors = [
+    {name = "Timothy Welch", email = "t.welch@calanalytics.com"}
+]
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.11"
+keywords = ["semgrep", "security", "html", "report", "ci-cd", "static-analysis"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+    "Topic :: Software Development :: Quality Assurance",
+]
+dependencies = [
+    "click>=8.0.0",
+    "matplotlib>=3.5.0",
+    "numpy>=1.21.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/calanalytics/semgrep-pretty-report"
+Repository = "https://github.com/calanalytics/semgrep-pretty-report"
+Issues = "https://github.com/calanalytics/semgrep-pretty-report/issues"
+
+[project.scripts]
+semgrep-pretty-report = "semgrep_pretty_report.__main__:main"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

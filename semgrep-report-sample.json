@@ -1,0 +1,440 @@
+{
+  "version": "1.141.1",
+  "results": [
+    {
+      "check_id": "generic.secrets.security.detected-jwt-token.detected-jwt-token",
+      "path": "/app/configs/auth.toml",
+      "start": {
+        "line": 4,
+        "col": 13,
+        "offset": 67
+      },
+      "end": {
+        "line": 4,
+        "col": 267,
+        "offset": 321
+      },
+      "extra": {
+        "message": "JWT token detected",
+        "metadata": {
+          "source-rule-url": "https://github.com/Yelp/detect-secrets/blob/master/detect_secrets/plugins/jwt.py",
+          "category": "security",
+          "technology": ["secrets", "jwt"],
+          "confidence": "LOW",
+          "references": ["https://semgrep.dev/blog/2020/hardcoded-secrets-unverified-tokens-and-other-common-jwt-mistakes/"],
+          "cwe": ["CWE-321: Use of Hard-coded Cryptographic Key"],
+          "owasp": ["A02:2021 - Cryptographic Failures"],
+          "subcategory": ["audit"],
+          "likelihood": "LOW",
+          "impact": "MEDIUM",
+          "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
+          "vulnerability_class": ["Cryptographic Issues"],
+          "source": "https://semgrep.dev/r/generic.secrets.security.detected-jwt-token.detected-jwt-token",
+          "shortlink": "https://sg.run/05N5"
+        },
+        "severity": "ERROR",
+        "fingerprint": "sample_fingerprint_1",
+        "lines": "sample_jwt_token_here",
+        "validation_state": "NO_VALIDATOR",
+        "engine_kind": "OSS"
+      }
+    },
+    {
+      "check_id": "yaml.docker-compose.security.no-new-privileges.no-new-privileges",
+      "path": "/app/docker-compose.yaml",
+      "start": {
+        "line": 3,
+        "col": 3,
+        "offset": 25
+      },
+      "end": {
+        "line": 3,
+        "col": 8,
+        "offset": 30
+      },
+      "extra": {
+        "message": "Service 'web_service' allows for privilege escalation via setuid or setgid binaries. Add 'no-new-privileges:true' in 'security_opt' to prevent this.",
+        "metadata": {
+          "cwe": ["CWE-732: Incorrect Permission Assignment for Critical Resource"],
+          "owasp": ["A05:2021 - Security Misconfiguration", "A06:2017 - Security Misconfiguration"],
+          "references": ["https://raesene.github.io/blog/2019/06/01/docker-capabilities-and-no-new-privs/", "https://www.kernel.org/doc/Documentation/prctl/no_new_privs.txt", "https://cheatsheetseries.owasp.org/cheatsheets/Docker_Security_Cheat_Sheet.html#rule-4-add-no-new-privileges-flag"],
+          "category": "security",
+          "technology": ["docker-compose"],
+          "cwe2021-top25": true,
+          "subcategory": ["audit"],
+          "likelihood": "LOW",
+          "impact": "HIGH",
+          "confidence": "LOW",
+          "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
+          "vulnerability_class": ["Improper Authorization"],
+          "source": "https://semgrep.dev/r/yaml.docker-compose.security.no-new-privileges.no-new-privileges",
+          "shortlink": "https://sg.run/0n8q"
+        },
+        "severity": "WARNING",
+        "fingerprint": "sample_fingerprint_2",
+        "lines": "web_service:",
+        "validation_state": "NO_VALIDATOR",
+        "engine_kind": "OSS"
+      }
+    },
+    {
+      "check_id": "yaml.docker-compose.security.writable-filesystem-service.writable-filesystem-service",
+      "path": "/app/docker-compose.yaml",
+      "start": {
+        "line": 3,
+        "col": 3,
+        "offset": 25
+      },
+      "end": {
+        "line": 3,
+        "col": 8,
+        "offset": 30
+      },
+      "extra": {
+        "message": "Service 'web_service' is running with a writable root filesystem. This may allow malicious applications to download and run additional payloads, or modify container files. If an application inside a container has to save something temporarily consider using a tmpfs. Add 'read_only: true' to this service to prevent this.",
+        "metadata": {
+          "cwe": ["CWE-732: Incorrect Permission Assignment for Critical Resource"],
+          "owasp": ["A05:2021 - Security Misconfiguration", "A06:2017 - Security Misconfiguration"],
+          "references": ["https://docs.docker.com/compose/compose-file/compose-file-v3/#domainname-hostname-ipc-mac_address-privileged-read_only-shm_size-stdin_open-tty-user-working_dir", "https://blog.atomist.com/security-of-docker-kubernetes/", "https://cheatsheetseries.owasp.org/cheatsheets/Docker_Security_Cheat_Sheet.html#rule-8-set-filesystem-and-volumes-to-read-only"],
+          "category": "security",
+          "technology": ["docker-compose"],
+          "cwe2021-top25": true,
+          "subcategory": ["audit"],
+          "likelihood": "LOW",
+          "impact": "HIGH",
+          "confidence": "LOW",
+          "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
+          "vulnerability_class": ["Improper Authorization"],
+          "source": "https://semgrep.dev/r/yaml.docker-compose.security.writable-filesystem-service.writable-filesystem-service",
+          "shortlink": "https://sg.run/e4JE"
+        },
+        "severity": "WARNING",
+        "fingerprint": "sample_fingerprint_3",
+        "lines": "web_service:",
+        "validation_state": "NO_VALIDATOR",
+        "engine_kind": "OSS"
+      }
+    },
+    {
+      "check_id": "yaml.docker-compose.security.no-new-privileges.no-new-privileges",
+      "path": "/app/docker-compose.yaml",
+      "start": {
+        "line": 13,
+        "col": 3,
+        "offset": 216
+      },
+      "end": {
+        "line": 13,
+        "col": 26,
+        "offset": 239
+      },
+      "extra": {
+        "message": "Service 'api_service' allows for privilege escalation via setuid or setgid binaries. Add 'no-new-privileges:true' in 'security_opt' to prevent this.",
+        "metadata": {
+          "cwe": ["CWE-732: Incorrect Permission Assignment for Critical Resource"],
+          "owasp": ["A05:2021 - Security Misconfiguration", "A06:2017 - Security Misconfiguration"],
+          "references": ["https://raesene.github.io/blog/2019/06/01/docker-capabilities-and-no-new-privs/", "https://www.kernel.org/doc/Documentation/prctl/no_new_privs.txt", "https://cheatsheetseries.owasp.org/cheatsheets/Docker_Security_Cheat_Sheet.html#rule-4-add-no-new-privileges-flag"],
+          "category": "security",
+          "technology": ["docker-compose"],
+          "cwe2021-top25": true,
+          "subcategory": ["audit"],
+          "likelihood": "LOW",
+          "impact": "HIGH",
+          "confidence": "LOW",
+          "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
+          "vulnerability_class": ["Improper Authorization"],
+          "source": "https://semgrep.dev/r/yaml.docker-compose.security.no-new-privileges.no-new-privileges",
+          "shortlink": "https://sg.run/0n8q"
+        },
+        "severity": "WARNING",
+        "fingerprint": "sample_fingerprint_4",
+        "lines": "api_service:",
+        "validation_state": "NO_VALIDATOR",
+        "engine_kind": "OSS"
+      }
+    },
+    {
+      "check_id": "yaml.docker-compose.security.writable-filesystem-service.writable-filesystem-service",
+      "path": "/app/docker-compose.yaml",
+      "start": {
+        "line": 13,
+        "col": 3,
+        "offset": 216
+      },
+      "end": {
+        "line": 13,
+        "col": 26,
+        "offset": 239
+      },
+      "extra": {
+        "message": "Service 'api_service' is running with a writable root filesystem. This may allow malicious applications to download and run additional payloads, or modify container files. If an application inside a container has to save something temporarily consider using a tmpfs. Add 'read_only: true' to this service to prevent this.",
+        "metadata": {
+          "cwe": ["CWE-732: Incorrect Permission Assignment for Critical Resource"],
+          "owasp": ["A05:2021 - Security Misconfiguration", "A06:2017 - Security Misconfiguration"],
+          "references": ["https://docs.docker.com/compose/compose-file/compose-file-v3/#domainname-hostname-ipc-mac_address-privileged-read_only-shm_size-stdin_open-tty-user-working_dir", "https://blog.atomist.com/security-of-docker-kubernetes/", "https://cheatsheetseries.owasp.org/cheatsheets/Docker_Security_Cheat_Sheet.html#rule-8-set-filesystem-and-volumes-to-read-only"],
+          "category": "security",
+          "technology": ["docker-compose"],
+          "cwe2021-top25": true,
+          "subcategory": ["audit"],
+          "likelihood": "LOW",
+          "impact": "HIGH",
+          "confidence": "LOW",
+          "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
+          "vulnerability_class": ["Improper Authorization"],
+          "source": "https://semgrep.dev/r/yaml.docker-compose.security.writable-filesystem-service.writable-filesystem-service",
+          "shortlink": "https://sg.run/e4JE"
+        },
+        "severity": "WARNING",
+        "fingerprint": "sample_fingerprint_5",
+        "lines": "api_service:",
+        "validation_state": "NO_VALIDATOR",
+        "engine_kind": "OSS"
+      }
+    },
+    {
+      "check_id": "python.jwt.security.unverified-jwt-decode.unverified-jwt-decode",
+      "path": "/app/services/auth/auth_client.py",
+      "start": {
+        "line": 86,
+        "col": 75,
+        "offset": 3246
+      },
+      "end": {
+        "line": 86,
+        "col": 80,
+        "offset": 3251
+      },
+      "extra": {
+        "message": "Detected JWT token decoded with 'verify=False'. This bypasses any integrity checks for the token which means the token could be tampered with by malicious actors. Ensure that the JWT token is verified.",
+        "fix": "True",
+        "metadata": {
+          "owasp": ["A02:2017 - Broken Authentication", "A07:2021 - Identification and Authentication Failures"],
+          "cwe": ["CWE-287: Improper Authentication"],
+          "references": ["https://github.com/we45/Vulnerable-Flask-App/blob/752ee16087c0bfb79073f68802d907569a1f0df7/app/app.py#L96"],
+          "category": "security",
+          "technology": ["jwt"],
+          "cwe2022-top25": true,
+          "cwe2021-top25": true,
+          "subcategory": ["audit"],
+          "likelihood": "MEDIUM",
+          "impact": "MEDIUM",
+          "confidence": "MEDIUM",
+          "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
+          "vulnerability_class": ["Improper Authentication"],
+          "source": "https://semgrep.dev/r/python.jwt.security.unverified-jwt-decode.unverified-jwt-decode",
+          "shortlink": "https://sg.run/6nyB"
+        },
+        "severity": "ERROR",
+        "fingerprint": "sample_fingerprint_6",
+        "lines": "jwt.decode(token, verify=False)",
+        "validation_state": "NO_VALIDATOR",
+        "engine_kind": "OSS"
+      }
+    },
+    {
+      "check_id": "python.sqlalchemy.security.sqlalchemy-execute-raw-query.sqlalchemy-execute-raw-query",
+      "path": "/app/services/database/database_client.py",
+      "start": {
+        "line": 30,
+        "col": 13,
+        "offset": 993
+      },
+      "end": {
+        "line": 30,
+        "col": 36,
+        "offset": 1016
+      },
+      "extra": {
+        "message": "Avoiding SQL string concatenation: untrusted input concatenated with raw SQL query can result in SQL Injection. In order to execute raw query safely, prepared statement should be used. SQLAlchemy provides TextualSQL to easily used prepared statement with named parameters. For complex SQL composition, use SQL Expression Language or Schema Definition Language. In most cases, SQLAlchemy ORM will be a better option.",
+        "metadata": {
+          "cwe": ["CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')"],
+          "owasp": ["A01:2017 - Injection", "A03:2021 - Injection"],
+          "references": ["https://docs.sqlalchemy.org/en/14/core/tutorial.html#using-textual-sql", "https://www.tutorialspoint.com/sqlalchemy/sqlalchemy_quick_guide.htm", "https://docs.sqlalchemy.org/en/14/core/tutorial.html#using-more-specific-text-with-table-expression-literal-column-and-expression-column"],
+          "category": "security",
+          "technology": ["sqlalchemy"],
+          "cwe2022-top25": true,
+          "cwe2021-top25": true,
+          "subcategory": ["audit"],
+          "likelihood": "LOW",
+          "impact": "HIGH",
+          "confidence": "LOW",
+          "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
+          "vulnerability_class": ["SQL Injection"],
+          "source": "https://semgrep.dev/r/python.sqlalchemy.security.sqlalchemy-execute-raw-query.sqlalchemy-execute-raw-query",
+          "shortlink": "https://sg.run/2b1L"
+        },
+        "severity": "ERROR",
+        "fingerprint": "sample_fingerprint_7",
+        "lines": "engine.execute(f\"SELECT * FROM users WHERE id = {user_id}\")",
+        "validation_state": "NO_VALIDATOR",
+        "engine_kind": "OSS"
+      }
+    },
+    {
+      "check_id": "python.lang.security.audit.telnetlib.telnetlib",
+      "path": "/app/services/utils/network_utils.py",
+      "start": {
+        "line": 71,
+        "col": 14,
+        "offset": 2455
+      },
+      "end": {
+        "line": 71,
+        "col": 64,
+        "offset": 2505
+      },
+      "extra": {
+        "message": "Telnet does not encrypt communications. Use SSH instead.",
+        "metadata": {
+          "source-rule-url": "https://github.com/PyCQA/bandit/blob/d5f8fa0d89d7b11442fc6ec80ca42953974354c8/bandit/blacklists/calls.py#L208",
+          "cwe": ["CWE-319: Cleartext Transmission of Sensitive Information"],
+          "owasp": ["A03:2017 - Sensitive Data Exposure", "A02:2021 - Cryptographic Failures"],
+          "bandit-code": "B312",
+          "references": ["https://docs.python.org/3/library/telnetlib.html"],
+          "category": "security",
+          "technology": ["python"],
+          "subcategory": ["audit"],
+          "likelihood": "LOW",
+          "impact": "LOW",
+          "confidence": "LOW",
+          "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
+          "vulnerability_class": ["Mishandled Sensitive Information"],
+          "source": "https://semgrep.dev/r/python.lang.security.audit.telnetlib.telnetlib",
+          "shortlink": "https://sg.run/Gelp"
+        },
+        "severity": "WARNING",
+        "fingerprint": "sample_fingerprint_8",
+        "lines": "import telnetlib",
+        "validation_state": "NO_VALIDATOR",
+        "engine_kind": "OSS"
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 3,
+      "level": "warn",
+      "type": "Syntax error",
+      "message": "Syntax error at line /app/services/core/main.py:194:\n `import` was unexpected",
+      "path": "/app/services/core/main.py"
+    },
+    {
+      "code": 3,
+      "level": "warn",
+      "type": "Syntax error",
+      "message": "Syntax error at line /app/tests/test_core.py:198:\n `def` was unexpected",
+      "path": "/app/tests/test_core.py"
+    },
+    {
+      "code": 3,
+      "level": "warn",
+      "type": "Syntax error",
+      "message": "Syntax error at line /app/tests/data/config.json:2:\n `{` was unexpected",
+      "path": "/app/tests/data/config.json"
+    }
+  ],
+  "paths": {
+    "scanned": [
+      "/app/.circleci/config.yml",
+      "/app/.coveragerc",
+      "/app/.dockerignore",
+      "/app/.gitignore",
+      "/app/.gitlab-ci.yml",
+      "/app/.python-version",
+      "/app/.semgrepignore",
+      "/app/.vscode/settings.json",
+      "/app/README.md",
+      "/app/configs/auth.toml",
+      "/app/configs/database.toml",
+      "/app/configs/logging.toml",
+      "/app/docker-compose.yaml",
+      "/app/pyproject.toml",
+      "/app/poetry.lock",
+      "/app/services/__init__.py",
+      "/app/services/auth/__init__.py",
+      "/app/services/auth/auth_client.py",
+      "/app/services/core/__init__.py",
+      "/app/services/core/main.py",
+      "/app/services/database/__init__.py",
+      "/app/services/database/database_client.py",
+      "/app/services/utils/__init__.py",
+      "/app/services/utils/network_utils.py",
+      "/app/tests/__init__.py",
+      "/app/tests/conftest.py",
+      "/app/tests/test_core.py",
+      "/app/tests/data/config.json"
+    ]
+  },
+  "time": {
+    "rules": [],
+    "rules_parse_time": 0.7099809646606445,
+    "profiling_times": {
+      "config_time": 1.6595184803009033,
+      "core_time": 3.405531883239746,
+      "ignores_time": 0.0007309913635253906,
+      "total_time": 5.066066026687622
+    },
+    "parsing_time": {
+      "total_time": 0.0,
+      "per_file_time": {
+        "mean": 0.0,
+        "std_dev": 0.0
+      },
+      "very_slow_stats": {
+        "time_ratio": 0.0,
+        "count_ratio": 0.0
+      },
+      "very_slow_files": []
+    },
+    "scanning_time": {
+      "total_time": 18.184556245803833,
+      "per_file_time": {
+        "mean": 0.016963205453175208,
+        "std_dev": 0.004907847374979962
+      },
+      "very_slow_stats": {
+        "time_ratio": 0.0,
+        "count_ratio": 0.0
+      },
+      "very_slow_files": []
+    },
+    "matching_time": {
+      "total_time": 0.0,
+      "per_file_and_rule_time": {
+        "mean": 0.0,
+        "std_dev": 0.0
+      },
+      "very_slow_stats": {
+        "time_ratio": 0.0,
+        "count_ratio": 0.0
+      },
+      "very_slow_rules_on_files": []
+    },
+    "tainting_time": {
+      "total_time": 0.0,
+      "per_def_and_rule_time": {
+        "mean": 0.0,
+        "std_dev": 0.0
+      },
+      "very_slow_stats": {
+        "time_ratio": 0.0,
+        "count_ratio": 0.0
+      },
+      "very_slow_rules_on_defs": []
+    },
+    "fixpoint_timeouts": [],
+    "prefiltering": {
+      "project_level_time": 0.0,
+      "file_level_time": 0.0,
+      "rules_with_project_prefilters_ratio": 0.0,
+      "rules_with_file_prefilters_ratio": 0.986284803733265,
+      "rules_selected_ratio": 0.03968016845220311,
+      "rules_matched_ratio": 0.03968016845220311
+    },
+    "targets": [],
+    "total_bytes": 0,
+    "max_memory_bytes": 1101237184
+  },
+  "engine_requested": "OSS",
+  "skipped_rules": []
+}
